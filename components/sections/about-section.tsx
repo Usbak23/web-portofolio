@@ -6,43 +6,10 @@ import { SkillCard } from "@/components/cards/skill-card"
 import { SectionTitle } from "@/components/shared/section-title"
 import { SocialLinks } from "@/components/shared/social-links"
 import { buttonVariants } from "@/components/ui/button"
-import { profile } from "@/data/profile"
+import { education, profile, values } from "@/data/profile"
 import { socials } from "@/data/socials"
 import { getAllSkillCategories, getSkillsByCategory } from "@/lib/helpers"
 import { cn } from "@/lib/utils"
-
-const VALUES = [
-  {
-    title: "Clean Code",
-    description:
-      "I believe code should be readable, maintainable, and easy to understand. Writing clean code is a form of respect for future developers — including yourself.",
-  },
-  {
-    title: "Continuous Learning",
-    description:
-      "Technology evolves fast. I stay curious, keep learning, and embrace new tools and practices that help me build better products.",
-  },
-  {
-    title: "User-Centered Thinking",
-    description:
-      "Every feature I build starts with the user in mind. Good software solves real problems and delivers genuine value to the people who use it.",
-  },
-  {
-    title: "Collaboration",
-    description:
-      "Great products are built by great teams. I value open communication, constructive feedback, and working together toward a shared goal.",
-  },
-]
-
-const EDUCATION = [
-  {
-    institution: "Universitas Pamulang",
-    degree: "Bachelor of Computer Science",
-    field: "Informatics Engineering",
-    period: "2019 — 2023",
-    location: "Tangerang Selatan, Banten",
-  },
-]
 
 export function AboutSection() {
   const categories = getAllSkillCategories()
@@ -128,7 +95,7 @@ export function AboutSection() {
               title="Education"
             />
             <div className="space-y-4">
-              {EDUCATION.map((edu) => (
+              {education.map((edu) => (
                 <div
                   key={edu.institution}
                   className="rounded-xl border border-border bg-card p-6"
@@ -196,7 +163,7 @@ export function AboutSection() {
               subtitle="Principles that guide how I work and collaborate."
             />
             <div className="grid gap-6 sm:grid-cols-2">
-              {VALUES.map(({ title, description }) => (
+              {values.map(({ title, description }) => (
                 <div
                   key={title}
                   className="rounded-xl border border-border bg-card p-6 space-y-2"

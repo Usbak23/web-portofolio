@@ -1,36 +1,20 @@
-import { Download, Link2, Mail, MapPin, MessageCircle } from "lucide-react"
+import { Mail, MapPin, MessageCircle, type LucideIcon } from "lucide-react"
+import { Download, Link2 } from "lucide-react"
 
 import { Container } from "@/components/layout/container"
 import { SectionTitle } from "@/components/shared/section-title"
 import { SocialLinks } from "@/components/shared/social-links"
 import { buttonVariants } from "@/components/ui/button"
+import { contactItems } from "@/data/contact"
 import { profile } from "@/data/profile"
 import { socials } from "@/data/socials"
 import { cn } from "@/lib/utils"
 
-const CONTACT_ITEMS = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "ahmad.mubarok2398@gmail.com",
-    href: "mailto:ahmad.mubarok2398@gmail.com",
-    external: false,
-  },
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    value: "+62 811-1015-0069",
-    href: "https://wa.me/6281110150069",
-    external: true,
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Tangerang Selatan, Banten",
-    href: null,
-    external: false,
-  },
-]
+const ICON_MAP: Record<string, LucideIcon> = {
+  Mail,
+  MessageCircle,
+  MapPin,
+}
 
 export function ContactSection() {
   return (
@@ -55,10 +39,12 @@ export function ContactSection() {
 
             {/* Contact items */}
             <ul className="space-y-4" aria-label="Contact information">
-              {CONTACT_ITEMS.map(({ icon: Icon, label, value, href, external }) => (
+              {contactItems.map(({ icon, label, value, href, external }) => {
+                const Icon = ICON_MAP[icon]
+                return (
                 <li key={label} className="flex items-start gap-4">
                   <div className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-card">
-                    <Icon className="size-4 text-muted-foreground" aria-hidden="true" />
+                    {Icon && <Icon className="size-4 text-muted-foreground" aria-hidden="true" />}
                   </div>
                   <div className="space-y-0.5">
                     <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
@@ -81,7 +67,8 @@ export function ContactSection() {
                     )}
                   </div>
                 </li>
-              ))}
+                )
+              })}
             </ul>
 
             {/* Social links */}

@@ -1,4 +1,4 @@
-import type { Profile } from "@/types/profile"
+import type { Education, Profile, Value } from "@/types/profile"
 
 export const profile: Profile = {
   name: "Ahmad Mubarok",
@@ -10,3 +10,36 @@ export const profile: Profile = {
   avatar: "/images/avatar.jpg",
   resumeUrl: "/resume.pdf",
 }
+
+export const values: Value[] = [
+  {
+    title: "Clean Code",
+    description:
+      "I believe code should be readable, maintainable, and easy to understand. Writing clean code is a form of respect for future developers — including yourself.",
+  },
+  {
+    title: "Continuous Learning",
+    description:
+      "Technology evolves fast. I stay curious, keep learning, and embrace new tools and practices that help me build better products.",
+  },
+  {
+    title: "User-Centered Thinking",
+    description:
+      "Every feature I build starts with the user in mind. Good software solves real problems and delivers genuine value to the people who use it.",
+  },
+  {
+    title: "Collaboration",
+    description:
+      "Great products are built by great teams. I value open communication, constructive feedback, and working together toward a shared goal.",
+  },
+]
+
+export const education: Education[] = [
+  {
+    institution: "Universitas Pamulang",
+    degree: "Bachelor of Computer Science",
+    field: "Informatics Engineering",
+    period: "2019 — 2023",
+    location: "Tangerang Selatan, Banten",
+  },
+]
