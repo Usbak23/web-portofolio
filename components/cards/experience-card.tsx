@@ -46,10 +46,12 @@ export function ExperienceCard({ experience, className }: ExperienceCardProps) {
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
           <span className="flex items-center gap-1">
             <Calendar className="size-3.5 shrink-0" aria-hidden="true" />
-            {startDate} — {endDate}
+            <span className="sr-only">Duration:</span>
+            <time>{startDate} — {endDate}</time>
           </span>
           <span className="flex items-center gap-1">
             <MapPin className="size-3.5 shrink-0" aria-hidden="true" />
+            <span className="sr-only">Location:</span>
             {location}
           </span>
         </div>

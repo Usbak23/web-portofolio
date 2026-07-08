@@ -10,7 +10,7 @@ export function SkillCard({ skill, className }: SkillCardProps) {
   const { name } = skill
 
   return (
-    <div
+    <li
       className={cn(
         "flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2",
         "text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
@@ -18,6 +18,6 @@ export function SkillCard({ skill, className }: SkillCardProps) {
       )}
     >
       <span>{name}</span>
-    </div>
+    </li>
   )
 }

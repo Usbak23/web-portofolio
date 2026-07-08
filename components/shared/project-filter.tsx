@@ -46,6 +46,13 @@ export function ProjectFilter({ projects, categories }: ProjectFilterProps) {
         ))}
       </div>
 
+      {/* Screen reader announcement */}
+      <p className="sr-only" aria-live="polite" aria-atomic="true">
+        {filtered.length === 0
+          ? `No projects found in the ${active} category.`
+          : `Showing ${filtered.length} ${filtered.length === 1 ? "project" : "projects"}${active !== ALL ? ` in ${active}` : ""}.`}
+      </p>
+
       {/* Grid */}
       {filtered.length > 0 ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

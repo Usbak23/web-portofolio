@@ -172,11 +172,11 @@ export function AboutSection() {
                     <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                       {category}
                     </h3>
-                    <div className="flex flex-wrap gap-2">
+                    <ul className="flex flex-wrap gap-2" aria-label={`${category} skills`}>
                       {categorySkills.map((skill) => (
                         <SkillCard key={skill.name} skill={skill} />
                       ))}
-                    </div>
+                    </ul>
                   </div>
                 )
               })}

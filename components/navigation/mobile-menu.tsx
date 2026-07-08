@@ -19,6 +19,19 @@ export function MobileMenu() {
   }, [pathname])
 
   useEffect(() => {
+    if (!open) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [open])
+
+  useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden"
     } else {
