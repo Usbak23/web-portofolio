@@ -1,7 +1,16 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 
-import { ProjectsSection } from "@/components/sections/projects-section"
+import { MotionSection } from "@/components/shared/motion-section"
 import { generatePageMetadata } from "@/lib/metadata"
+
+const ProjectsSection = dynamic(
+  () =>
+    import("@/components/sections/projects-section").then(
+      (m) => m.ProjectsSection
+    ),
+  { ssr: true }
+)
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Projects",
@@ -11,5 +20,9 @@ export const metadata: Metadata = generatePageMetadata({
 })
 
 export default function ProjectsPage() {
-  return <ProjectsSection />
+  return (
+    <MotionSection>
+      <ProjectsSection />
+    </MotionSection>
+  )
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 
 import { ExperienceSection } from "@/components/sections/experience-section"
+import { MotionSection } from "@/components/shared/motion-section"
 import { generatePageMetadata } from "@/lib/metadata"
 
 export const metadata: Metadata = generatePageMetadata({
@@ -11,5 +12,9 @@ export const metadata: Metadata = generatePageMetadata({
 })
 
 export default function ExperiencePage() {
-  return <ExperienceSection />
+  return (
+    <MotionSection>
+      <ExperienceSection />
+    </MotionSection>
+  )
 }

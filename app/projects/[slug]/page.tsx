@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 
+import { MotionSection } from "@/components/shared/motion-section"
 import { getProjectBySlug } from "@/lib/helpers"
 import { generatePageMetadata } from "@/lib/metadata"
 import { projects } from "@/data/projects"
@@ -42,5 +43,9 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   if (!project) notFound()
 
-  return <ProjectDetailSection project={project} />
+  return (
+    <MotionSection>
+      <ProjectDetailSection project={project} />
+    </MotionSection>
+  )
 }

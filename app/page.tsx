@@ -7,6 +7,7 @@ import { FeaturedProjectsSection } from "@/components/sections/featured-projects
 import { HeroSection } from "@/components/sections/hero-section"
 import { SkillsSection } from "@/components/sections/skills-section"
 import { Container } from "@/components/layout/container"
+import { MotionSection } from "@/components/shared/motion-section"
 import { generatePageMetadata } from "@/lib/metadata"
 
 export const metadata: Metadata = generatePageMetadata()
@@ -14,14 +15,31 @@ export const metadata: Metadata = generatePageMetadata()
 export default function Home() {
   return (
     <>
+      {/* Hero — above fold, no entrance animation */}
       <Container>
         <HeroSection />
       </Container>
-      <AboutPreviewSection />
-      <FeaturedProjectsSection />
-      <SkillsSection />
-      <ExperiencePreviewSection />
-      <ContactCTASection />
+
+      {/* Below fold — animate on scroll */}
+      <MotionSection>
+        <AboutPreviewSection />
+      </MotionSection>
+
+      <MotionSection>
+        <FeaturedProjectsSection />
+      </MotionSection>
+
+      <MotionSection>
+        <SkillsSection />
+      </MotionSection>
+
+      <MotionSection>
+        <ExperiencePreviewSection />
+      </MotionSection>
+
+      <MotionSection>
+        <ContactCTASection />
+      </MotionSection>
     </>
   )
 }

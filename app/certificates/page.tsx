@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 
+import { MotionSection } from "@/components/shared/motion-section"
 import { generatePageMetadata } from "@/lib/metadata"
 
 const CertificatesSection = dynamic(
@@ -19,5 +20,9 @@ export const metadata: Metadata = generatePageMetadata({
 })
 
 export default function CertificatesPage() {
-  return <CertificatesSection />
+  return (
+    <MotionSection>
+      <CertificatesSection />
+    </MotionSection>
+  )
 }

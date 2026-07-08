@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 
+import { MotionSection } from "@/components/shared/motion-section"
 import { generatePageMetadata } from "@/lib/metadata"
 
 const ContactSection = dynamic(
@@ -19,5 +20,9 @@ export const metadata: Metadata = generatePageMetadata({
 })
 
 export default function ContactPage() {
-  return <ContactSection />
+  return (
+    <MotionSection>
+      <ContactSection />
+    </MotionSection>
+  )
 }

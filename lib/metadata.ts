@@ -13,7 +13,7 @@ export function generatePageMetadata({
   title,
   description = SITE_DESCRIPTION,
   path = "",
-  image = "/og-image.jpg",
+  image = "/og-image.png",
 }: PageMetadataOptions = {}): Metadata {
   const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_TITLE
   const url = `${SITE_URL}${path}`
