@@ -1,10 +1,18 @@
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 
-import { ProjectDetailSection } from "@/components/sections/project-detail-section"
 import { getProjectBySlug } from "@/lib/helpers"
 import { generatePageMetadata } from "@/lib/metadata"
 import { projects } from "@/data/projects"
+
+const ProjectDetailSection = dynamic(
+  () =>
+    import("@/components/sections/project-detail-section").then(
+      (m) => m.ProjectDetailSection
+    ),
+  { ssr: true }
+)
 
 interface Props {
   params: Promise<{ slug: string }>

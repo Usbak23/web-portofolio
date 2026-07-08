@@ -1,7 +1,15 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 
-import { CertificatesSection } from "@/components/sections/certificates-section"
 import { generatePageMetadata } from "@/lib/metadata"
+
+const CertificatesSection = dynamic(
+  () =>
+    import("@/components/sections/certificates-section").then(
+      (m) => m.CertificatesSection
+    ),
+  { ssr: true }
+)
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Certificates",
