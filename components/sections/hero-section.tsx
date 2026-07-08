@@ -1,6 +1,9 @@
+"use client"
+
 import { ArrowRight, Download } from "lucide-react"
 import Link from "next/link"
 
+import SplitText from "@/components/shared/SplitText"
 import { SocialLinks } from "@/components/shared/social-links"
 import { buttonVariants } from "@/components/ui/button"
 import { profile } from "@/data/profile"
@@ -18,10 +21,15 @@ export function HeroSection() {
           <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
             Available for work
           </p>
+
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Hi, I&apos;m{" "}
-            <span className="text-primary">{profile.name}</span>
+            <SplitText
+              text={`Hi, I'm ${profile.name}`}
+              className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+              tag="span"
+            />
           </h1>
+
           <p className="text-xl font-medium text-muted-foreground sm:text-2xl">
             {profile.title}
           </p>
