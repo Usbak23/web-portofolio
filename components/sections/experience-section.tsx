@@ -16,6 +16,7 @@ export function ExperienceSection() {
         <div className="space-y-16">
           <SectionTitle
             id="experience-heading"
+            as="h1"
             title="Experience"
             subtitle="My professional journey and organizational involvement."
           />

@@ -15,6 +15,7 @@ export function ProjectsSection() {
         <div className="space-y-10">
           <SectionTitle
             id="projects-heading"
+            as="h1"
             title="Projects"
             subtitle="A collection of things I've built — from web apps to APIs."
           />

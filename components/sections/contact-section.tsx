@@ -42,6 +42,7 @@ export function ContactSection() {
           <div className="space-y-8">
             <SectionTitle
               id="contact-heading"
+              as="h1"
               title="Get In Touch"
               subtitle="I'm currently open to new opportunities. Feel free to reach out."
             />

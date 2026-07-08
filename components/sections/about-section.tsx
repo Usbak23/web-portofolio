@@ -56,6 +56,7 @@ export function AboutSection() {
             <div className="space-y-6 lg:col-span-2">
               <SectionTitle
                 id="biography-heading"
+                as="h1"
                 title="About Me"
                 subtitle="Fullstack Developer & Project Manager based in Indonesia."
               />

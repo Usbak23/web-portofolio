@@ -6,6 +6,7 @@ interface SectionTitleProps {
   className?: string
   align?: "left" | "center"
   id?: string
+  as?: "h1" | "h2"
 }
 
 export function SectionTitle({
@@ -14,6 +15,7 @@ export function SectionTitle({
   className,
   align = "left",
   id,
+  as: Tag = "h2",
 }: SectionTitleProps) {
   return (
     <div
@@ -23,9 +25,9 @@ export function SectionTitle({
         className
       )}
     >
-      <h2 id={id} className="text-2xl font-semibold tracking-tight sm:text-3xl">
+      <Tag id={id} className="text-2xl font-semibold tracking-tight sm:text-3xl">
         {title}
-      </h2>
+      </Tag>
       {subtitle && (
         <p className="text-base text-muted-foreground sm:text-lg">{subtitle}</p>
       )}

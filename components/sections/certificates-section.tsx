@@ -15,6 +15,7 @@ export function CertificatesSection() {
         <div className="space-y-12">
           <SectionTitle
             id="certificates-heading"
+            as="h1"
             title="Certificates"
             subtitle="Professional certifications, courses, and training I've completed."
           />
