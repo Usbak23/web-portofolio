@@ -1,18 +1,19 @@
-import { Mail, MapPin, MessageCircle, type LucideIcon } from "lucide-react"
+import { MapPin } from "lucide-react"
 import { Download, Link2 } from "lucide-react"
 
 import { Container } from "@/components/layout/container"
 import { SectionTitle } from "@/components/shared/section-title"
 import { SocialLinks } from "@/components/shared/social-links"
+import { MailIcon, WhatsappIcon } from "@/components/shared/brand-icons"
 import { buttonVariants } from "@/components/ui/button"
 import { contactItems } from "@/data/contact"
 import { profile } from "@/data/profile"
 import { socials } from "@/data/socials"
 import { cn } from "@/lib/utils"
 
-const ICON_MAP: Record<string, LucideIcon> = {
-  Mail,
-  MessageCircle,
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  Mail: MailIcon,
+  MessageCircle: WhatsappIcon,
   MapPin,
 }
 

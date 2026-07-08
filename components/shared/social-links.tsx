@@ -1,22 +1,17 @@
 import {
-  GitBranch,
-  Link2,
-  Mail,
-  MessageCircle,
-  Globe,
-  type LucideIcon,
-} from "lucide-react"
-
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+  WhatsappIcon,
+} from "@/components/shared/brand-icons"
 import { cn } from "@/lib/utils"
 import type { Social } from "@/types/social"
 
-const ICON_MAP: Record<string, LucideIcon> = {
-  Github: GitBranch,
-  Linkedin: Link2,
-  Mail,
-  MessageCircle,
-  Twitter: Globe,
-  Globe,
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  Github: GithubIcon,
+  Linkedin: LinkedinIcon,
+  Mail: MailIcon,
+  MessageCircle: WhatsappIcon,
 }
 
 interface SocialLinksProps {
@@ -31,7 +26,10 @@ export function SocialLinks({
   iconSize = "md",
 }: SocialLinksProps) {
   return (
-    <ul className={cn("flex items-center gap-2", className)} aria-label="Social links">
+    <ul
+      className={cn("flex items-center gap-2", className)}
+      aria-label="Social links"
+    >
       {socials.map(({ label, url, icon }) => {
         const Icon = ICON_MAP[icon]
         const isExternal = url.startsWith("http")
@@ -52,10 +50,7 @@ export function SocialLinks({
               )}
             >
               {Icon && (
-                <Icon
-                  className={iconSize === "sm" ? "size-4" : "size-5"}
-                  aria-hidden="true"
-                />
+                <Icon className={iconSize === "sm" ? "size-4" : "size-5"} />
               )}
             </a>
           </li>
