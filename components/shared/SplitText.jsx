@@ -1,92 +1,95 @@
-import { useRef, useEffect, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText as GSAPSplitText } from 'gsap/SplitText';
-import { useGSAP } from '@gsap/react';
+import { useRef, useEffect, useState } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { SplitText as GSAPSplitText } from "gsap/SplitText"
+import { useGSAP } from "@gsap/react"
 
-gsap.registerPlugin(ScrollTrigger, GSAPSplitText, useGSAP);
+gsap.registerPlugin(ScrollTrigger, GSAPSplitText, useGSAP)
 
 const SplitText = ({
   text,
-  className = '',
+  className = "",
   delay = 50,
   duration = 1.25,
-  ease = 'power3.out',
-  splitType = 'chars',
+  ease = "power3.out",
+  splitType = "chars",
   from = { opacity: 0, y: 40 },
   to = { opacity: 1, y: 0 },
   threshold = 0.1,
-  rootMargin = '-100px',
-  textAlign = 'center',
-  tag = 'p',
-  onLetterAnimationComplete = undefined
+  rootMargin = "-100px",
+  textAlign = "center",
+  tag = "p",
+  onLetterAnimationComplete = undefined,
 }) => {
-  const ref = useRef(null);
-  const animationCompletedRef = useRef(false);
-  const onCompleteRef = useRef(onLetterAnimationComplete);
-  const [fontsLoaded, setFontsLoaded] = useState(false);
+  const ref = useRef(null)
+  const animationCompletedRef = useRef(false)
+  const onCompleteRef = useRef(onLetterAnimationComplete)
+  const [fontsLoaded, setFontsLoaded] = useState(false)
 
   // Keep callback ref updated
   useEffect(() => {
-    onCompleteRef.current = onLetterAnimationComplete;
-  }, [onLetterAnimationComplete]);
+    onCompleteRef.current = onLetterAnimationComplete
+  }, [onLetterAnimationComplete])
 
   useEffect(() => {
-    if (document.fonts.status === 'loaded') {
-      setFontsLoaded(true);
+    if (document.fonts.status === "loaded") {
+      setFontsLoaded(true)
     } else {
       document.fonts.ready.then(() => {
-        setFontsLoaded(true);
-      });
+        setFontsLoaded(true)
+      })
     }
-  }, []);
+  }, [])
 
   useGSAP(
     () => {
-      if (!ref.current || !text || !fontsLoaded) return;
+      if (!ref.current || !text || !fontsLoaded) return
       // Prevent re-animation if already completed
-      if (animationCompletedRef.current) return;
-      const el = ref.current;
+      if (animationCompletedRef.current) return
+      const el = ref.current
 
       if (el._rbsplitInstance) {
         try {
-          el._rbsplitInstance.revert();
+          el._rbsplitInstance.revert()
         } catch (_) {
           /* noop */
         }
-        el._rbsplitInstance = null;
+        el._rbsplitInstance = null
       }
 
-      const startPct = (1 - threshold) * 100;
-      const marginMatch = /^(-?\d+(?:\.\d+)?)(px|em|rem|%)?$/.exec(rootMargin);
-      const marginValue = marginMatch ? parseFloat(marginMatch[1]) : 0;
-      const marginUnit = marginMatch ? marginMatch[2] || 'px' : 'px';
+      const startPct = (1 - threshold) * 100
+      const marginMatch = /^(-?\d+(?:\.\d+)?)(px|em|rem|%)?$/.exec(rootMargin)
+      const marginValue = marginMatch ? parseFloat(marginMatch[1]) : 0
+      const marginUnit = marginMatch ? marginMatch[2] || "px" : "px"
       const sign =
         marginValue === 0
-          ? ''
+          ? ""
           : marginValue < 0
             ? `-=${Math.abs(marginValue)}${marginUnit}`
-            : `+=${marginValue}${marginUnit}`;
-      const start = `top ${startPct}%${sign}`;
+            : `+=${marginValue}${marginUnit}`
+      const start = `top ${startPct}%${sign}`
 
-      let targets;
-      const assignTargets = self => {
-        if (splitType.includes('chars') && self.chars.length) targets = self.chars;
-        if (!targets && splitType.includes('words') && self.words.length) targets = self.words;
-        if (!targets && splitType.includes('lines') && self.lines.length) targets = self.lines;
-        if (!targets) targets = self.chars || self.words || self.lines;
-      };
+      let targets
+      const assignTargets = (self) => {
+        if (splitType.includes("chars") && self.chars.length)
+          targets = self.chars
+        if (!targets && splitType.includes("words") && self.words.length)
+          targets = self.words
+        if (!targets && splitType.includes("lines") && self.lines.length)
+          targets = self.lines
+        if (!targets) targets = self.chars || self.words || self.lines
+      }
 
       const splitInstance = new GSAPSplitText(el, {
         type: splitType,
         smartWrap: true,
-        autoSplit: splitType === 'lines',
-        linesClass: 'split-line',
-        wordsClass: 'split-word',
-        charsClass: 'split-char',
+        autoSplit: splitType === "lines",
+        linesClass: "split-line",
+        wordsClass: "split-word",
+        charsClass: "split-char",
         reduceWhiteSpace: false,
-        onSplit: self => {
-          assignTargets(self);
+        onSplit: (self) => {
+          assignTargets(self)
           const tween = gsap.fromTo(
             targets,
             { ...from },
@@ -100,33 +103,33 @@ const SplitText = ({
                 start,
                 once: true,
                 fastScrollEnd: true,
-                anticipatePin: 0.4
+                anticipatePin: 0.4,
               },
               onComplete: () => {
-                animationCompletedRef.current = true;
-                onCompleteRef.current?.();
+                animationCompletedRef.current = true
+                onCompleteRef.current?.()
               },
-              willChange: 'transform, opacity',
-              force3D: true
+              willChange: "transform, opacity",
+              force3D: true,
             }
-          );
-          return tween;
-        }
-      });
+          )
+          return tween
+        },
+      })
 
-      el._rbsplitInstance = splitInstance;
+      el._rbsplitInstance = splitInstance
 
       return () => {
-        ScrollTrigger.getAll().forEach(st => {
-          if (st.trigger === el) st.kill();
-        });
+        ScrollTrigger.getAll().forEach((st) => {
+          if (st.trigger === el) st.kill()
+        })
         try {
-          splitInstance.revert();
+          splitInstance.revert()
         } catch (_) {
           /* noop */
         }
-        el._rbsplitInstance = null;
-      };
+        el._rbsplitInstance = null
+      }
     },
     {
       dependencies: [
@@ -139,31 +142,31 @@ const SplitText = ({
         JSON.stringify(to),
         threshold,
         rootMargin,
-        fontsLoaded
+        fontsLoaded,
       ],
-      scope: ref
+      scope: ref,
     }
-  );
+  )
 
   const renderTag = () => {
     const style = {
       textAlign,
-      overflow: 'hidden',
-      display: 'inline-block',
-      whiteSpace: 'normal',
-      wordWrap: 'break-word',
-      willChange: 'transform, opacity'
-    };
-    const classes = `split-parent ${className}`;
-    const Tag = tag || 'p';
+      overflow: "hidden",
+      display: "inline-block",
+      whiteSpace: "normal",
+      wordWrap: "break-word",
+      willChange: "transform, opacity",
+    }
+    const classes = `split-parent ${className}`
+    const Tag = tag || "p"
 
     return (
       <Tag ref={ref} style={style} className={classes}>
         {text}
       </Tag>
-    );
-  };
-  return renderTag();
-};
+    )
+  }
+  return renderTag()
+}
 
-export default SplitText;
+export default SplitText
