@@ -38,7 +38,7 @@ export const education: Education[] = [
   {
     institution: "Universitas Pamulang",
     degree: "Bachelor of Computer Science",
-    field: "Informatics Engineering",
+    field: "Information System",
     period: "2019 — 2024",
     location: "Tangerang Selatan, Banten",
   },
