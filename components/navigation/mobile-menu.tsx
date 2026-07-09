@@ -65,12 +65,12 @@ export function MobileMenu() {
           id="mobile-menu"
         >
           <div
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm"
+            className="bg-background/80 fixed inset-0 backdrop-blur-sm"
             onClick={() => setOpen(false)}
             aria-hidden="true"
           />
 
-          <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-background px-6 py-6 shadow-lg">
+          <div className="bg-background fixed inset-y-0 right-0 w-full max-w-xs px-6 py-6 shadow-lg">
             <div className="flex items-center justify-between">
               <Link
                 href="/"
@@ -101,7 +101,7 @@ export function MobileMenu() {
                         className={cn(
                           "block rounded-md px-3 py-2.5 text-base font-medium transition-colors",
                           "hover:bg-accent hover:text-accent-foreground",
-                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                          "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
                           isActive
                             ? "bg-accent text-accent-foreground"
                             : "text-muted-foreground"

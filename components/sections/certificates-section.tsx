@@ -24,7 +24,7 @@ export function CertificatesSection() {
             const items = certificates.filter((c) => c.category === category)
             return (
               <div key={category} className="space-y-6">
-                <h2 className="text-lg font-semibold text-muted-foreground">
+                <h2 className="text-muted-foreground text-lg font-semibold">
                   {category}
                 </h2>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

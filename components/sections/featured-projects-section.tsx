@@ -23,7 +23,10 @@ export function FeaturedProjectsSection() {
             />
             <Link
               href="/projects"
-              className={cn(buttonVariants({ variant: "outline" }), "w-fit shrink-0")}
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "w-fit shrink-0"
+              )}
             >
               View All Projects
               <ArrowRight className="size-4" aria-hidden="true" />

@@ -8,7 +8,13 @@ import type { Project } from "@/types/project"
 
 type ProjectDetailHeaderProps = Pick<
   Project,
-  "title" | "category" | "status" | "startDate" | "endDate" | "githubUrl" | "liveUrl"
+  | "title"
+  | "category"
+  | "status"
+  | "startDate"
+  | "endDate"
+  | "githubUrl"
+  | "liveUrl"
 >
 
 export function ProjectDetailHeader({
@@ -25,7 +31,10 @@ export function ProjectDetailHeader({
       {/* Back link */}
       <Link
         href="/projects"
-        className={cn(buttonVariants({ variant: "ghost" }), "-ml-2 w-fit gap-1.5")}
+        className={cn(
+          buttonVariants({ variant: "ghost" }),
+          "-ml-2 w-fit gap-1.5"
+        )}
         aria-label="Back to all projects"
       >
         <ArrowLeft className="size-4" aria-hidden="true" />
@@ -49,7 +58,7 @@ export function ProjectDetailHeader({
       </h1>
 
       {/* Date */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
+      <div className="text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
         <span className="flex items-center gap-1.5">
           <Calendar className="size-4 shrink-0" aria-hidden="true" />
           {startDate}

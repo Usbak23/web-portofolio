@@ -8,12 +8,12 @@ import { SITE_NAME } from "@/lib/constants"
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/80 backdrop-blur-sm">
+    <header className="border-border/50 bg-background/80 sticky top-0 z-40 w-full border-b backdrop-blur-sm">
       <Container>
         <div className="flex h-14 items-center justify-between">
           <Link
             href="/"
-            className="text-sm font-semibold tracking-tight transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="focus-visible:ring-ring text-sm font-semibold tracking-tight transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none"
           >
             {SITE_NAME}
           </Link>

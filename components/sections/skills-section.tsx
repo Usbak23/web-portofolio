@@ -22,10 +22,13 @@ export function SkillsSection() {
               const categorySkills = getSkillsByCategory(category)
               return (
                 <div key={category} className="space-y-3">
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                  <h3 className="text-muted-foreground text-sm font-semibold tracking-wider uppercase">
                     {category}
                   </h3>
-                  <ul className="flex flex-wrap gap-2" aria-label={`${category} skills`}>
+                  <ul
+                    className="flex flex-wrap gap-2"
+                    aria-label={`${category} skills`}
+                  >
                     {categorySkills.map((skill) => (
                       <SkillCard key={skill.name} skill={skill} />
                     ))}

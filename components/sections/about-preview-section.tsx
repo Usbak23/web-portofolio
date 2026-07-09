@@ -18,14 +18,17 @@ export function AboutPreviewSection() {
               title="About Me"
               subtitle="A little bit about who I am and what I do."
             />
-            <p className="text-base leading-relaxed text-muted-foreground">
+            <p className="text-muted-foreground text-base leading-relaxed">
               {profile.bio}
             </p>
-            <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+            <div className="text-muted-foreground flex items-center gap-1.5 text-sm">
               <MapPin className="size-4 shrink-0" aria-hidden="true" />
               {profile.location}
             </div>
-            <Link href="/about" className={cn(buttonVariants({ variant: "outline" }))}>
+            <Link
+              href="/about"
+              className={cn(buttonVariants({ variant: "outline" }))}
+            >
               More About Me
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
@@ -40,10 +43,10 @@ export function AboutPreviewSection() {
             ].map(({ label, value }) => (
               <div
                 key={label}
-                className="rounded-xl border border-border bg-card p-6 text-center"
+                className="border-border bg-card rounded-xl border p-6 text-center"
               >
                 <p className="text-3xl font-bold">{value}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{label}</p>
+                <p className="text-muted-foreground mt-1 text-sm">{label}</p>
               </div>
             ))}
           </div>

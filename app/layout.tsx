@@ -4,7 +4,12 @@ import { Geist } from "next/font/google"
 import { Footer } from "@/components/layout/footer"
 import { Navbar } from "@/components/navigation/navbar"
 import { ThemeProvider } from "@/components/shared/theme-provider"
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/constants"
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/lib/constants"
 import { profile } from "@/data/profile"
 import { socials } from "@/data/socials"
 
@@ -61,16 +66,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={geist.variable} suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+      <body className="bg-background text-foreground min-h-screen font-sans antialiased">
         <a
           href="#main-content"
-          className="absolute -top-full left-4 z-[9999] rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-[top] duration-100 focus:top-4 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="bg-primary text-primary-foreground focus:ring-ring absolute -top-full left-4 z-[9999] rounded-md px-4 py-2 text-sm font-medium transition-[top] duration-100 focus:top-4 focus:ring-2 focus:ring-offset-2 focus:outline-none"
         >
           Skip to main content
         </a>
         <ThemeProvider>
           <Navbar />
-          <main id="main-content" className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
         <script

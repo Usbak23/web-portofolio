@@ -20,7 +20,7 @@ export default function NotFound() {
       <Container>
         <div className="mx-auto flex max-w-md flex-col items-center gap-6 text-center">
           {/* Status code */}
-          <p className="text-8xl font-bold tracking-tight text-muted-foreground/30 sm:text-9xl">
+          <p className="text-muted-foreground/30 text-8xl font-bold tracking-tight sm:text-9xl">
             404
           </p>
 
@@ -32,9 +32,9 @@ export default function NotFound() {
             >
               Page Not Found
             </h1>
-            <p className="text-base text-muted-foreground">
-              Sorry, the page you are looking for doesn&apos;t exist or has
-              been moved.
+            <p className="text-muted-foreground text-base">
+              Sorry, the page you are looking for doesn&apos;t exist or has been
+              moved.
             </p>
           </div>
 

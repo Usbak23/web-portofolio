@@ -1,9 +1,5 @@
 export type ExperienceType =
-  | "Full-time"
-  | "Part-time"
-  | "Internship"
-  | "Freelance"
-  | "Organization"
+  "Full-time" | "Part-time" | "Internship" | "Freelance" | "Organization"
 
 export interface Experience {
   company: string

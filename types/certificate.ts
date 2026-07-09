@@ -1,8 +1,5 @@
 export type CertificateCategory =
-  | "Professional"
-  | "Training"
-  | "Workshop"
-  | "Course"
+  "Professional" | "Training" | "Workshop" | "Course"
 
 export interface Certificate {
   name: string

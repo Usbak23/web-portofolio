@@ -7,10 +7,10 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border/50 py-8">
+    <footer className="border-border/50 border-t py-8">
       <Container>
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             &copy; {year} {SITE_NAME}. All rights reserved.
           </p>
 
@@ -20,7 +20,7 @@ export function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="text-muted-foreground hover:text-foreground focus-visible:ring-ring text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
                   >
                     {label}
                   </Link>

@@ -3,7 +3,10 @@ import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import type { Project } from "@/types/project"
 
-type ProjectDetailSidebarProps = Pick<Project, "title" | "technologies" | "images">
+type ProjectDetailSidebarProps = Pick<
+  Project,
+  "title" | "technologies" | "images"
+>
 
 export function ProjectDetailSidebar({
   title,
@@ -32,7 +35,7 @@ export function ProjectDetailSidebar({
             {images.map((src, i) => (
               <div
                 key={i}
-                className="relative aspect-video overflow-hidden rounded-lg border border-border bg-muted"
+                className="border-border bg-muted relative aspect-video overflow-hidden rounded-lg border"
               >
                 <Image
                   src={src}

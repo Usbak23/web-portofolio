@@ -21,9 +21,9 @@ function DetailBlock({ heading, items }: DetailBlockProps) {
       <h2 className="text-lg font-semibold">{heading}</h2>
       <ul className="space-y-2">
         {items.map((item, i) => (
-          <li key={i} className="flex gap-2 text-sm text-muted-foreground">
+          <li key={i} className="text-muted-foreground flex gap-2 text-sm">
             <span
-              className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary"
+              className="bg-primary mt-1.5 size-1.5 shrink-0 rounded-full"
               aria-hidden="true"
             />
             {item}
@@ -68,7 +68,7 @@ export function ProjectDetailSection({ project }: ProjectDetailSectionProps) {
           />
 
           {/* Thumbnail */}
-          <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border bg-muted">
+          <div className="border-border bg-muted relative aspect-video w-full overflow-hidden rounded-xl border">
             <Image
               src={thumbnail}
               alt={`${title} project screenshot`}
@@ -85,7 +85,7 @@ export function ProjectDetailSection({ project }: ProjectDetailSectionProps) {
             <div className="space-y-10 lg:col-span-2">
               <div className="space-y-3">
                 <h2 className="text-lg font-semibold">Overview</h2>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {description}
                 </p>
               </div>

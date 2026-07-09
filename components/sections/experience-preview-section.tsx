@@ -25,7 +25,10 @@ export function ExperiencePreviewSection() {
             />
             <Link
               href="/experience"
-              className={cn(buttonVariants({ variant: "outline" }), "w-fit shrink-0")}
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "w-fit shrink-0"
+              )}
             >
               View All Experience
               <ArrowRight className="size-4" aria-hidden="true" />

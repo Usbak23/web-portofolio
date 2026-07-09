@@ -44,8 +44,8 @@ export function SocialLinks({
                 rel: "noopener noreferrer",
               })}
               className={cn(
-                "inline-flex items-center justify-center rounded-md text-muted-foreground transition-colors",
-                "hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                "text-muted-foreground inline-flex items-center justify-center rounded-md transition-colors",
+                "hover:text-foreground focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
                 iconSize === "sm" ? "size-8" : "size-9"
               )}
             >

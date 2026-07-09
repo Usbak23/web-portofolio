@@ -10,17 +10,20 @@ interface CertificateCardProps {
   className?: string
 }
 
-export function CertificateCard({ certificate, className }: CertificateCardProps) {
+export function CertificateCard({
+  certificate,
+  className,
+}: CertificateCardProps) {
   const { name, issuer, date, image, credentialUrl, category } = certificate
 
   return (
     <article
       className={cn(
-        "group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-shadow hover:shadow-md",
+        "group border-border bg-card flex flex-col overflow-hidden rounded-xl border transition-shadow hover:shadow-md",
         className
       )}
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-muted">
+      <div className="bg-muted relative aspect-video w-full overflow-hidden">
         <Image
           src={image}
           alt={`${name} certificate from ${issuer}`}
@@ -32,8 +35,8 @@ export function CertificateCard({ certificate, className }: CertificateCardProps
 
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="space-y-1">
-          <h3 className="font-semibold leading-snug">{name}</h3>
-          <p className="text-sm text-muted-foreground">{issuer}</p>
+          <h3 className="leading-snug font-semibold">{name}</h3>
+          <p className="text-muted-foreground text-sm">{issuer}</p>
         </div>
 
         <div className="mt-auto flex items-center justify-between gap-2">
@@ -41,7 +44,7 @@ export function CertificateCard({ certificate, className }: CertificateCardProps
             <Badge variant="secondary" className="text-xs">
               {category}
             </Badge>
-            <span className="text-xs text-muted-foreground">{date}</span>
+            <span className="text-muted-foreground text-xs">{date}</span>
           </div>
 
           {credentialUrl && (
@@ -50,7 +53,7 @@ export function CertificateCard({ certificate, className }: CertificateCardProps
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${name} credential`}
-              className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="text-muted-foreground hover:text-foreground focus-visible:ring-ring inline-flex items-center gap-1 text-xs transition-colors focus-visible:ring-2 focus-visible:outline-none"
             >
               <ExternalLink className="size-3.5" aria-hidden="true" />
               Verify

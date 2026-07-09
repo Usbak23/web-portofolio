@@ -25,11 +25,14 @@ export function SectionTitle({
         className
       )}
     >
-      <Tag id={id} className="text-2xl font-semibold tracking-tight sm:text-3xl">
+      <Tag
+        id={id}
+        className="text-2xl font-semibold tracking-tight sm:text-3xl"
+      >
         {title}
       </Tag>
       {subtitle && (
-        <p className="text-base text-muted-foreground sm:text-lg">{subtitle}</p>
+        <p className="text-muted-foreground text-base sm:text-lg">{subtitle}</p>
       )}
     </div>
   )

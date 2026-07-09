@@ -22,7 +22,6 @@ export function ContactSection() {
     <section aria-labelledby="contact-heading" className="py-20">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-
           {/* Left — intro */}
           <div className="space-y-8">
             <SectionTitle
@@ -32,7 +31,7 @@ export function ContactSection() {
               subtitle="I'm currently open to new opportunities. Feel free to reach out."
             />
 
-            <p className="text-base leading-relaxed text-muted-foreground">
+            <p className="text-muted-foreground text-base leading-relaxed">
               Whether you have a project in mind, a question about my work, or
               just want to say hello — I&apos;d love to hear from you. I
               typically respond within 24 hours.
@@ -43,38 +42,43 @@ export function ContactSection() {
               {contactItems.map(({ icon, label, value, href, external }) => {
                 const Icon = ICON_MAP[icon]
                 return (
-                <li key={label} className="flex items-start gap-4">
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-card">
-                    {Icon && <Icon className="size-4 text-muted-foreground" aria-hidden="true" />}
-                  </div>
-                  <div className="space-y-0.5">
-                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                      {label}
-                    </p>
-                    {href ? (
-                      <a
-                        href={href}
-                        {...(external && {
-                          target: "_blank",
-                          rel: "noopener noreferrer",
-                        })}
-                        aria-label={`${label}: ${value}`}
-                        className="text-sm font-medium transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                      >
-                        {value}
-                      </a>
-                    ) : (
-                      <p className="text-sm font-medium">{value}</p>
-                    )}
-                  </div>
-                </li>
+                  <li key={label} className="flex items-start gap-4">
+                    <div className="border-border bg-card flex size-10 shrink-0 items-center justify-center rounded-lg border">
+                      {Icon && (
+                        <Icon
+                          className="text-muted-foreground size-4"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </div>
+                    <div className="space-y-0.5">
+                      <p className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
+                        {label}
+                      </p>
+                      {href ? (
+                        <a
+                          href={href}
+                          {...(external && {
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                          })}
+                          aria-label={`${label}: ${value}`}
+                          className="hover:text-primary focus-visible:ring-ring text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        <p className="text-sm font-medium">{value}</p>
+                      )}
+                    </div>
+                  </li>
                 )
               })}
             </ul>
 
             {/* Social links */}
             <div className="space-y-3">
-              <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              <p className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
                 Find me on
               </p>
               <SocialLinks socials={socials} />
@@ -84,10 +88,10 @@ export function ContactSection() {
           {/* Right — actions */}
           <div className="space-y-6">
             {/* Resume card */}
-            <div className="rounded-xl border border-border bg-card p-6 space-y-4">
+            <div className="border-border bg-card space-y-4 rounded-xl border p-6">
               <div className="space-y-1">
                 <h2 className="font-semibold">Resume</h2>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   Download my resume to learn more about my experience, skills,
                   and education.
                 </p>
@@ -96,7 +100,10 @@ export function ContactSection() {
                 href={profile.resumeUrl}
                 download
                 aria-label="Download Ahmad Mubarok's resume"
-                className={cn(buttonVariants({ variant: "default" }), "w-full justify-center gap-2")}
+                className={cn(
+                  buttonVariants({ variant: "default" }),
+                  "w-full justify-center gap-2"
+                )}
               >
                 <Download className="size-4" aria-hidden="true" />
                 Download Resume
@@ -104,10 +111,10 @@ export function ContactSection() {
             </div>
 
             {/* Quick links card */}
-            <div className="rounded-xl border border-border bg-card p-6 space-y-4">
+            <div className="border-border bg-card space-y-4 rounded-xl border p-6">
               <div className="space-y-1">
                 <h2 className="font-semibold">Quick Links</h2>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   Explore my work and professional profiles.
                 </p>
               </div>
@@ -121,10 +128,13 @@ export function ContactSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`Visit ${label} profile`}
-                        className="flex items-center justify-between rounded-lg border border-border px-4 py-2.5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        className="border-border hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring flex items-center justify-between rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
                       >
                         {label}
-                        <Link2 className="size-3.5 text-muted-foreground" aria-hidden="true" />
+                        <Link2
+                          className="text-muted-foreground size-3.5"
+                          aria-hidden="true"
+                        />
                       </a>
                     </li>
                   ))}
@@ -132,13 +142,13 @@ export function ContactSection() {
             </div>
 
             {/* Availability badge */}
-            <div className="flex items-center gap-3 rounded-xl border border-border bg-card px-5 py-4">
+            <div className="border-border bg-card flex items-center gap-3 rounded-xl border px-5 py-4">
               <span
                 className="size-2.5 shrink-0 rounded-full bg-green-500"
                 aria-hidden="true"
               />
-              <p className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">
+              <p className="text-muted-foreground text-sm">
+                <span className="text-foreground font-medium">
                   Available for work
                 </span>{" "}
                 — open to full-time and freelance opportunities.

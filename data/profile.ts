@@ -2,12 +2,12 @@ import type { Education, Profile, Value } from "@/types/profile"
 
 export const profile: Profile = {
   name: "Ahmad Mubarok",
-  title: "Fullstack Developer & Project Manager",
+  title: "Software Engineer, Web Developer, Fullstack Developer, Mobile Developer",
   tagline: "Building clean, scalable, and user-focused web applications.",
   bio: "Halo, saya Ahmad Mubarok, seorang Fullstack Developer dan Project Manager yang berfokus pada pengembangan aplikasi web modern, skalabel, dan berorientasi pada kebutuhan pengguna. Saya berpengalaman membangun solusi digital menggunakan React, Next.js, Express.js, TypeScript, PostgreSQL, MongoDB, Docker, serta menerapkan praktik CI/CD untuk proses deployment yang efisien. Selain kemampuan teknis, saya memiliki pengalaman memimpin tim, mengelola proyek, dan menerjemahkan kebutuhan bisnis menjadi solusi teknologi yang tepat. Saya senang mempelajari teknologi baru, meningkatkan kualitas produk, dan berkolaborasi dalam menciptakan aplikasi yang memberikan nilai nyata bagi pengguna maupun organisasi. Bagi saya, teknologi adalah sarana untuk menciptakan inovasi dan dampak yang berkelanjutan.",
   location: "Tangerang Selatan, Banten",
   email: "ahmad.mubarok2398@gmail.com",
-  avatar: "/images/avatar.jpg",
+  avatar: "/images/avatar.png",
   resumeUrl: "/resume.pdf",
 }
 
@@ -39,7 +39,7 @@ export const education: Education[] = [
     institution: "Universitas Pamulang",
     degree: "Bachelor of Computer Science",
     field: "Informatics Engineering",
-    period: "2019 — 2023",
+    period: "2019 — 2024",
     location: "Tangerang Selatan, Banten",
   },
 ]

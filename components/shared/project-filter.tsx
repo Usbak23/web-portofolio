@@ -35,7 +35,7 @@ export function ProjectFilter({ projects, categories }: ProjectFilterProps) {
             onClick={() => setActive(cat as ProjectCategory | typeof ALL)}
             className={cn(
               "rounded-lg border px-4 py-1.5 text-sm font-medium transition-colors",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
               active === cat
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border bg-card text-muted-foreground hover:bg-accent hover:text-accent-foreground"
@@ -61,9 +61,9 @@ export function ProjectFilter({ projects, categories }: ProjectFilterProps) {
           ))}
         </div>
       ) : (
-        <div className="flex min-h-[200px] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card text-center">
+        <div className="border-border bg-card flex min-h-[200px] flex-col items-center justify-center gap-2 rounded-xl border text-center">
           <p className="font-medium">No projects found</p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             No projects in the &quot;{active}&quot; category yet.
           </p>
         </div>

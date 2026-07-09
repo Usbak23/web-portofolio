@@ -3,12 +3,20 @@
 import { ArrowRight, Download } from "lucide-react"
 import Link from "next/link"
 
-import SplitText from "@/components/shared/SplitText"
+import SplitText from "@/components/shared/split-text"
+import TextType from "@/components/shared/text-type"
 import { SocialLinks } from "@/components/shared/social-links"
 import { buttonVariants } from "@/components/ui/button"
 import { profile } from "@/data/profile"
 import { socials } from "@/data/socials"
 import { cn } from "@/lib/utils"
+
+const TITLES = [
+  "Fullstack Developer",
+  "Software Engineer",
+  "Web Developer",
+  "Mobile Developer",
+]
 
 export function HeroSection() {
   return (
@@ -18,7 +26,7 @@ export function HeroSection() {
     >
       <div className="flex max-w-3xl flex-col items-center gap-6">
         <div className="space-y-4">
-          <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+          <p className="text-muted-foreground text-sm font-medium tracking-widest uppercase">
             Available for work
           </p>
 
@@ -30,12 +38,23 @@ export function HeroSection() {
             />
           </h1>
 
-          <p className="text-xl font-medium text-muted-foreground sm:text-2xl">
-            {profile.title}
+          <p className="text-muted-foreground text-xl font-medium sm:text-2xl">
+            <TextType
+              text={TITLES}
+              as="span"
+              className="text-muted-foreground text-xl font-medium sm:text-2xl"
+              typingSpeed={75}
+              deletingSpeed={50}
+              pauseDuration={1500}
+              loop
+              showCursor
+              cursorCharacter="_"
+              cursorBlinkDuration={0.5}
+            />
           </p>
         </div>
 
-        <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p className="text-muted-foreground max-w-xl text-base leading-relaxed sm:text-lg">
           {profile.tagline}
         </p>
 

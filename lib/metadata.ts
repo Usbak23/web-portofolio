@@ -1,6 +1,11 @@
 import type { Metadata } from "next"
 
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/constants"
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/lib/constants"
 
 interface PageMetadataOptions {
   title?: string
