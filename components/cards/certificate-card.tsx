@@ -1,7 +1,11 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
 import Image from "next/image"
 
 import { Badge } from "@/components/ui/badge"
+import { cardHoverProps, staggerItemScale } from "@/lib/animations"
 import { cn } from "@/lib/utils"
 import type { Certificate } from "@/types/certificate"
 
@@ -17,9 +21,12 @@ export function CertificateCard({
   const { name, issuer, date, image, credentialUrl, category } = certificate
 
   return (
-    <article
+    <motion.article
+      variants={staggerItemScale}
+      {...cardHoverProps}
       className={cn(
-        "group border-border bg-card flex flex-col overflow-hidden rounded-xl border transition-shadow hover:shadow-md",
+        "group border-border bg-card flex flex-col overflow-hidden rounded-xl border",
+        "shadow-sm hover:shadow-lg transition-shadow duration-300",
         className
       )}
     >
@@ -28,9 +35,10 @@ export function CertificateCard({
           src={image}
           alt={`${name} certificate from ${issuer}`}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
+        <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-5">
@@ -61,6 +69,6 @@ export function CertificateCard({
           )}
         </div>
       </div>
-    </article>
+    </motion.article>
   )
 }

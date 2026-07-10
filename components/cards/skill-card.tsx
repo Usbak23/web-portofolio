@@ -1,3 +1,8 @@
+"use client"
+
+import { motion } from "framer-motion"
+
+import { subtleHoverProps, staggerItem } from "@/lib/animations"
 import { cn } from "@/lib/utils"
 import type { Skill } from "@/types/skill"
 import * as Icons from "@/components/shared/skill-icons"
@@ -41,15 +46,18 @@ export function SkillCard({ skill, className }: SkillCardProps) {
   const Icon = ICON_MAP[name]
 
   return (
-    <li
+    <motion.li
+      variants={staggerItem}
+      {...subtleHoverProps}
       className={cn(
         "border-border bg-card flex items-center gap-2 rounded-lg border px-3 py-2",
-        "hover:bg-accent hover:text-accent-foreground text-sm font-medium transition-colors",
+        "hover:bg-accent hover:text-accent-foreground hover:shadow-sm text-sm font-medium",
+        "transition-colors duration-200 cursor-default",
         className
       )}
     >
       {Icon && <Icon className="size-4 shrink-0" />}
       <span>{name}</span>
-    </li>
+    </motion.li>
   )
 }

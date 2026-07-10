@@ -141,8 +141,8 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "api-gateway-service",
-    title: "API Gateway Service",
+    slug: "e-plantation",
+    title: "e-plantation",
     summary:
       "A lightweight API gateway for routing, rate limiting, and authentication across microservices.",
     description:

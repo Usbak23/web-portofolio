@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/container"
 import { SkillCard } from "@/components/cards/skill-card"
 import { SectionTitle } from "@/components/shared/section-title"
+import { MotionStagger } from "@/components/shared/motion-stagger"
 import { getAllSkillCategories, getSkillsByCategory } from "@/lib/helpers"
 
 export function SkillsSection() {
@@ -17,7 +18,10 @@ export function SkillsSection() {
             align="center"
           />
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <MotionStagger
+            speed="slow"
+            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {categories.map((category) => {
               const categorySkills = getSkillsByCategory(category)
               return (
@@ -25,18 +29,23 @@ export function SkillsSection() {
                   <h3 className="text-muted-foreground text-sm font-semibold tracking-wider uppercase">
                     {category}
                   </h3>
-                  <ul
+                  {/* Stagger skills dalam setiap kategori */}
+                  <MotionStagger
+                    speed="fast"
                     className="flex flex-wrap gap-2"
-                    aria-label={`${category} skills`}
                   >
                     {categorySkills.map((skill) => (
-                      <SkillCard key={skill.name} skill={skill} />
+                      <SkillCard
+                        key={skill.name}
+                        skill={skill}
+                        className="list-none"
+                      />
                     ))}
-                  </ul>
+                  </MotionStagger>
                 </div>
               )
             })}
-          </div>
+          </MotionStagger>
         </div>
       </Container>
     </section>

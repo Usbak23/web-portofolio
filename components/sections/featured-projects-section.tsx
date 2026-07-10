@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Container } from "@/components/layout/container"
 import { ProjectCard } from "@/components/cards/project-card"
 import { SectionTitle } from "@/components/shared/section-title"
+import { MotionStagger } from "@/components/shared/motion-stagger"
 import { buttonVariants } from "@/components/ui/button"
 import { getFeaturedProjects } from "@/lib/helpers"
 import { cn } from "@/lib/utils"
@@ -33,11 +34,14 @@ export function FeaturedProjectsSection() {
             </Link>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <MotionStagger
+            speed="slow"
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {featuredProjects.map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
-          </div>
+          </MotionStagger>
         </div>
       </Container>
     </section>

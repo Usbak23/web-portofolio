@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/container"
 import { ExperienceCard } from "@/components/cards/experience-card"
 import { SectionTitle } from "@/components/shared/section-title"
+import { MotionStagger } from "@/components/shared/motion-stagger"
 import { experiences } from "@/data/experiences"
 import type { ExperienceType } from "@/types/experience"
 
@@ -35,7 +36,10 @@ export function ExperienceSection() {
                 </h2>
 
                 {/* Timeline */}
-                <div className="before:bg-border relative space-y-6 pl-6 before:absolute before:inset-y-0 before:left-0 before:w-px">
+                <MotionStagger
+                  speed="default"
+                  className="before:bg-border relative space-y-6 pl-6 before:absolute before:inset-y-0 before:left-0 before:w-px"
+                >
                   {grouped.map((experience, index) => (
                     <div key={index} className="relative">
                       {/* Timeline dot */}
@@ -46,7 +50,7 @@ export function ExperienceSection() {
                       <ExperienceCard experience={experience} />
                     </div>
                   ))}
-                </div>
+                </MotionStagger>
               </div>
             )
           })}

@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/container"
 import { CertificateCard } from "@/components/cards/certificate-card"
 import { SectionTitle } from "@/components/shared/section-title"
+import { MotionStagger } from "@/components/shared/motion-stagger"
 import { certificates } from "@/data/certificates"
 import type { CertificateCategory } from "@/types/certificate"
 
@@ -27,14 +28,17 @@ export function CertificatesSection() {
                 <h2 className="text-muted-foreground text-lg font-semibold">
                   {category}
                 </h2>
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <MotionStagger
+                  speed="slow"
+                  className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                >
                   {items.map((certificate) => (
                     <CertificateCard
                       key={certificate.name}
                       certificate={certificate}
                     />
                   ))}
-                </div>
+                </MotionStagger>
               </div>
             )
           })}

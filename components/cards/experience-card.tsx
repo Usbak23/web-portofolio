@@ -1,6 +1,10 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { Briefcase, Calendar, MapPin } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
+import { staggerItemLeft } from "@/lib/animations"
 import { cn } from "@/lib/utils"
 import type { Experience } from "@/types/experience"
 
@@ -23,9 +27,15 @@ export function ExperienceCard({ experience, className }: ExperienceCardProps) {
   } = experience
 
   return (
-    <article
+    <motion.article
+      variants={staggerItemLeft}
+      whileHover={{
+        x: 4,
+        transition: { duration: 0.2, ease: [0, 0, 0.2, 1] },
+      }}
       className={cn(
-        "border-border bg-card rounded-xl border p-6 transition-shadow hover:shadow-md",
+        "border-border bg-card rounded-xl border p-6",
+        "shadow-sm hover:shadow-md transition-shadow duration-300",
         className
       )}
     >
@@ -87,6 +97,6 @@ export function ExperienceCard({ experience, className }: ExperienceCardProps) {
           </div>
         )}
       </div>
-    </article>
+    </motion.article>
   )
 }
