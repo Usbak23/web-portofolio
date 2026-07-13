@@ -1,8 +1,10 @@
 "use client"
 
+import { Component, type ReactNode } from "react"
 import { motion } from "framer-motion"
 import { ArrowRight, Download } from "lucide-react"
 import Link from "next/link"
+import dynamic from "next/dynamic"
 
 import SplitText from "@/components/shared/split-text"
 import TextType from "@/components/shared/text-type"
@@ -18,6 +20,32 @@ import {
 } from "@/lib/animations"
 import { cn } from "@/lib/utils"
 
+const Orb = dynamic(() => import("@/components/shared/orb"), { ssr: false })
+
+const Lanyard = dynamic(() => import("@/components/shared/lanyard"), {
+  ssr: false,
+})
+
+// Error boundary to prevent Lanyard WebGL errors from crashing the page
+class LanyardErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: ReactNode }) {
+    super(props)
+    this.state = { hasError: false }
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true }
+  }
+
+  render() {
+    if (this.state.hasError) return null
+    return this.props.children
+  }
+}
+
 const TITLES = [
   "Fullstack Developer",
   "Software Engineer",
@@ -29,10 +57,37 @@ export function HeroSection() {
   return (
     <section
       aria-label="Hero"
-      className="flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center py-20 text-center"
+      className="relative flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center py-20 text-center"
     >
+      {/* Orb — full section background */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <Orb
+          hue={250}
+          hoverIntensity={0.5}
+          rotateOnHover={true}
+          forceHoverState={false}
+        />
+      </div>
+
+      {/* Lanyard — absolute full area, desktop only, pointer events only on right side */}
+      <div
+        className="absolute inset-0 hidden xl:block"
+        aria-hidden="true"
+      >
+        <LanyardErrorBoundary>
+          <Lanyard
+            position={[0, 0, 20]}
+            gravity={[0, -40, 0]}
+            frontImage="/images/avatar.png"
+            imageFit="cover"
+            groupPositionY={6}
+          />
+        </LanyardErrorBoundary>
+      </div>
+
+      {/* Hero content — stays centered */}
       <motion.div
-        className="flex max-w-3xl flex-col items-center gap-6"
+        className="relative z-10 flex max-w-3xl flex-col items-center gap-6"
         variants={heroContainer}
         initial="hidden"
         animate="visible"
