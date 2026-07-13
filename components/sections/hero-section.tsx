@@ -1,6 +1,6 @@
 "use client"
 
-import { Component, type ReactNode } from "react"
+import { Component, useEffect, useState, type ReactNode } from "react"
 import { motion } from "framer-motion"
 import { ArrowRight, Download } from "lucide-react"
 import Link from "next/link"
@@ -54,36 +54,51 @@ const TITLES = [
 ]
 
 export function HeroSection() {
+  // Defer heavy WebGL components until after page is interactive
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    const id = requestIdleCallback(
+      () => setMounted(true),
+      { timeout: 2000 },
+    )
+    return () => cancelIdleCallback(id)
+  }, [])
+
   return (
     <section
       aria-label="Hero"
       className="relative flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center py-20 text-center"
     >
-      {/* Orb — full section background */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <Orb
-          hue={250}
-          hoverIntensity={0.5}
-          rotateOnHover={true}
-          forceHoverState={false}
-        />
-      </div>
-
-      {/* Lanyard — absolute full area, desktop only, pointer events only on right side */}
-      <div
-        className="absolute inset-0 hidden xl:block"
-        aria-hidden="true"
-      >
-        <LanyardErrorBoundary>
-          <Lanyard
-            position={[0, 0, 20]}
-            gravity={[0, -40, 0]}
-            frontImage="/images/avatar.png"
-            imageFit="cover"
-            groupPositionY={6}
+      {/* Orb — full section background, deferred */}
+      {mounted && (
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <Orb
+            hue={250}
+            hoverIntensity={0.5}
+            rotateOnHover={true}
+            forceHoverState={false}
           />
-        </LanyardErrorBoundary>
-      </div>
+        </div>
+      )}
+
+      {/* Lanyard — absolute full area, desktop only, deferred */}
+      {mounted && (
+        <div
+          className="absolute inset-0 hidden xl:block"
+          aria-hidden="true"
+        >
+          <LanyardErrorBoundary>
+            <Lanyard
+              position={[0, 0, 20]}
+              gravity={[0, -40, 0]}
+              frontImage="/images/avatar.png"
+              imageFit="cover"
+              groupPositionY={6}
+            />
+          </LanyardErrorBoundary>
+        </div>
+      )}
 
       {/* Hero content — stays centered */}
       <motion.div
