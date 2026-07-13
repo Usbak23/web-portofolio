@@ -13,7 +13,7 @@ export const certificates: Certificate[] = [
     name: "Full-Stack JavaScript Developer 2021: Website Top Up Voucher Game",
     issuer: "BWA",
     date: "Maret 2024",
-    image: "/images/certificates/BWA-JS.PNG",
+    image: "/images/certificates/BWA-JS.png",
     credentialUrl: "https://www.bwa.org/certificates",
     category: "Professional",
   },
