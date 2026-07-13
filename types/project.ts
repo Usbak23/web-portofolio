@@ -6,7 +6,7 @@ export interface Project {
   slug: string
   title: string
   summary: string
-  description: string
+  description: string 
   thumbnail: string
   images: string[]
   technologies: string[]
