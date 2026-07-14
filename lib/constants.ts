@@ -1,12 +1,12 @@
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ahmadmubarok.dev"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://my.amtechsolutions.my.id"
 
 export const SITE_NAME = "Ahmad Mubarok"
 
-export const SITE_TITLE = "Ahmad Mubarok | Full Stack Developer"
+export const SITE_TITLE = "Ahmad Mubarok | Software Engineering | Full Stack Developer | Mobile Developer | Tech Antusiast"
 
 export const SITE_DESCRIPTION =
-  "Personal portfolio of Ahmad Mubarok — Full Stack Developer specializing in building clean, scalable, and performant web applications."
+  "Personal portfolio of Ahmad Mubarok — Software Engineering specializing in building clean, scalable, and performant web applications."
 
 export const NAV_LINKS = [
   { label: "About", href: "/about" },

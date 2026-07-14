@@ -69,19 +69,50 @@ export const experiences: Experience[] = [
     technologies: ["React", "Next.js", "MySQL", "Tailwind CSS", "Vercel"],
   },
   {
-    company: "Himpunan Mahasiswa Teknik Informatika",
-    position: "Head of Technology Division",
+    company: "Badan Pengelola Latihan Himpunan Mahasiswa Islam Cabang Ciputat",
+    position: "Head Of Research and Development",
     type: "Organization",
-    startDate: "March 2020",
-    endDate: "March 2021",
+    startDate: "Januari 2024",
+    endDate: "Oktober 2025",
     location: "Tangerang Selatan, Banten",
     description:
       "Led the technology division of the student association, organizing workshops and managing the division's digital infrastructure.",
     responsibilities: [
-      "Organized programming workshops and tech talks attended by 100+ students.",
-      "Developed and maintained the organization's official website.",
-      "Mentored junior members in web development fundamentals.",
-      "Coordinated with other divisions to support technology needs for events.",
+      "Collaborated with internal trainers and stakeholders to standardize program quality.",
+      "Conducted impact evaluations to enhance training effectiveness.",
+      "Strengthened organizational structure and member engagement.",
+    ],
+    technologies: ["HTML", "CSS", "JavaScript", "WordPress"],
+  },
+  {
+    company: "Himpunan Mahasiswa Islam Komisariat Fakultas Teknik Cabang Ciputat",
+    position: "chairman",
+    type: "Organization",
+    startDate: "April 2024",
+    endDate: "April 2025",
+    location: "Tangerang Selatan, Banten",
+    description:
+      "Led the technology division of the student association, organizing workshops and managing the division's digital infrastructure.",
+    responsibilities: [
+      "Directed leadership and intellectual development programs for members.",
+      "Facilitated regular forums, training sessions, and social initiatives.",
+      "Strengthened organizational structure and member engagement.",
+    ],
+    technologies: ["HTML", "CSS", "JavaScript", "WordPress"],
+  },
+  {
+    company: "Himpunan Mahasiswa Sistem Informasi Universitas Pamulang",
+    position: "Chairman",
+    type: "Organization",
+    startDate: "February 2022",
+    endDate: "Januari 2023",
+    location: "Tangerang Selatan, Banten",
+    description:
+      "Led the technology division of the student association, organizing workshops and managing the division's digital infrastructure.",
+    responsibilities: [
+      "Led a university-wide student organization with 100+ active members.",
+      "Coordinated campus-wide iniatiatives and represented student interests in administrative disscussions.",
+      "Oversaw program planning, budgeting and team perfomance."
     ],
     technologies: ["HTML", "CSS", "JavaScript", "WordPress"],
   },

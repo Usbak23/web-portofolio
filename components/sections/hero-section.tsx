@@ -74,9 +74,9 @@ export function HeroSection() {
       {mounted && (
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <Orb
-            hue={250}
-            hoverIntensity={0.5}
-            rotateOnHover={true}
+            hue={0}
+            hoverIntensity={2}
+            rotateOnHover
             forceHoverState={false}
           />
         </div>

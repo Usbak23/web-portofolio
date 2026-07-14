@@ -1,12 +1,16 @@
 "use client"
 
-import { Menu, X } from "lucide-react"
+import { AnimatePresence, motion } from "framer-motion"
+import { Download, Menu, X } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 
-import { Button } from "@/components/ui/button"
-import { NAV_LINKS } from "@/lib/constants"
+import { SocialLinks } from "@/components/shared/social-links"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { profile } from "@/data/profile"
+import { socials } from "@/data/socials"
+import { NAV_LINKS, SITE_NAME } from "@/lib/constants"
 import { cn } from "@/lib/utils"
 
 export function MobileMenu() {
@@ -14,8 +18,7 @@ export function MobileMenu() {
   const pathname = usePathname()
 
   useEffect(() => {
-    const timer = setTimeout(() => setOpen(false), 0)
-    return () => clearTimeout(timer)
+    setTimeout(() => setOpen(false), 0)
   }, [pathname])
 
   useEffect(() => {
@@ -32,11 +35,7 @@ export function MobileMenu() {
   }, [open])
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
+    document.body.style.overflow = open ? "hidden" : ""
     return () => {
       document.body.style.overflow = ""
     }
@@ -56,68 +55,120 @@ export function MobileMenu() {
         <Menu className="size-5" />
       </Button>
 
-      {open && (
-        <div
-          className="fixed inset-0 z-50 md:hidden"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Navigation menu"
-          id="mobile-menu"
-        >
+      <AnimatePresence>
+        {open && (
           <div
-            className="bg-background/80 fixed inset-0 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
-            aria-hidden="true"
-          />
+            className="fixed inset-0 z-50 md:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
+            id="mobile-menu"
+          >
+            {/* Backdrop */}
+            <motion.div
+              className="bg-background/60 fixed inset-0 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setOpen(false)}
+              aria-hidden="true"
+            />
 
-          <div className="bg-background fixed inset-y-0 right-0 w-full max-w-xs px-6 py-6 shadow-lg">
-            <div className="flex items-center justify-between">
-              <Link
-                href="/"
-                className="text-sm font-semibold"
-                onClick={() => setOpen(false)}
-              >
-                Ahmad Mubarok
-              </Link>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setOpen(false)}
-                aria-label="Close navigation menu"
-              >
-                <X className="size-5" />
-              </Button>
-            </div>
+            {/* Drawer */}
+            <motion.div
+              className="bg-background border-border/50 fixed inset-y-0 right-0 flex w-full max-w-xs flex-col border-l shadow-xl"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between border-b px-6 py-4">
+                <Link
+                  href="/"
+                  className="focus-visible:ring-ring text-sm font-semibold tracking-tight transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none"
+                  onClick={() => setOpen(false)}
+                >
+                  {SITE_NAME}
+                </Link>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setOpen(false)}
+                  aria-label="Close navigation menu"
+                >
+                  <X className="size-5" />
+                </Button>
+              </div>
 
-            <nav aria-label="Mobile navigation" className="mt-8">
-              <ul className="flex flex-col gap-1">
-                {NAV_LINKS.map(({ label, href }) => {
-                  const isActive =
-                    pathname === href || pathname.startsWith(`${href}/`)
-                  return (
-                    <li key={href}>
-                      <Link
-                        href={href}
-                        className={cn(
-                          "block rounded-md px-3 py-2.5 text-base font-medium transition-colors",
-                          "hover:bg-accent hover:text-accent-foreground",
-                          "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
-                          isActive
-                            ? "bg-accent text-accent-foreground"
-                            : "text-muted-foreground"
-                        )}
-                        aria-current={isActive ? "page" : undefined}
+              {/* Nav Links */}
+              <nav
+                aria-label="Mobile navigation"
+                className="flex-1 overflow-y-auto px-4 py-6"
+              >
+                <ul className="flex flex-col gap-1">
+                  {NAV_LINKS.map(({ label, href }, index) => {
+                    const isActive =
+                      pathname === href || pathname.startsWith(`${href}/`)
+                    return (
+                      <motion.li
+                        key={href}
+                        initial={{ opacity: 0, x: 16 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          duration: 0.2,
+                          delay: index * 0.04,
+                          ease: "easeOut",
+                        }}
                       >
-                        {label}
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-            </nav>
+                        <Link
+                          href={href}
+                          className={cn(
+                            "block rounded-md px-3 py-2.5 text-base font-medium transition-colors",
+                            "hover:bg-accent hover:text-accent-foreground",
+                            "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
+                            isActive
+                              ? "bg-accent text-accent-foreground"
+                              : "text-muted-foreground"
+                          )}
+                          aria-current={isActive ? "page" : undefined}
+                        >
+                          {label}
+                        </Link>
+                      </motion.li>
+                    )
+                  })}
+                </ul>
+              </nav>
+
+              {/* Footer: Social + Resume */}
+              <motion.div
+                className="border-t px-6 py-5"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, delay: 0.2, ease: "easeOut" }}
+              >
+                <a
+                  href={profile.resumeUrl}
+                  download
+                  aria-label="Download Resume"
+                  className={buttonVariants({
+                    variant: "outline",
+                    size: "sm",
+                    className: "mb-4 w-full gap-2",
+                  })}
+                >
+                  <Download className="size-4" />
+                  Download CV
+                </a>
+
+                <SocialLinks socials={socials} className="justify-center" />
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </>
   )
 }
