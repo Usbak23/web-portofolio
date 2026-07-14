@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import type { ReactNode } from "react"
 
 import {
@@ -33,6 +33,12 @@ export function MotionStagger({
   speed = "default",
   delay,
 }: MotionStaggerProps) {
+  const reduced = useReducedMotion()
+
+  if (reduced) {
+    return <div className={className}>{children}</div>
+  }
+
   const variants = delay
     ? {
         hidden: {},

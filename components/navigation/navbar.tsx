@@ -13,6 +13,7 @@ export function Navbar() {
         <div className="flex h-14 items-center justify-between">
           <Link
             href="/"
+            aria-label={`${SITE_NAME} — Back to home`}
             className="focus-visible:ring-ring text-sm font-semibold tracking-tight transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none"
           >
             {SITE_NAME}

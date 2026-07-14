@@ -62,6 +62,10 @@ export default function TextType({
   const [isVisible, setIsVisible] = useState(!startOnVisible)
   const cursorRef = useRef<HTMLSpanElement>(null)
   const containerRef = useRef<HTMLElement>(null)
+  const prefersReducedMotion =
+    typeof window !== "undefined"
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false
 
   const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text])
 
@@ -177,6 +181,15 @@ export default function TextType({
     (currentCharIndex < textArray[currentTextIndex].length || isDeleting)
 
   const Tag = Component
+
+  // Respect prefers-reduced-motion: show first text statically
+  if (prefersReducedMotion) {
+    return (
+      <Tag className={`inline-block whitespace-pre-wrap tracking-tight ${className}`}>
+        <span className="inline">{textArray[0]}</span>
+      </Tag>
+    )
+  }
 
   return (
     <Tag

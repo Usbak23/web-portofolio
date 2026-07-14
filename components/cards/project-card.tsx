@@ -45,7 +45,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         <div className="bg-muted relative aspect-video w-full overflow-hidden">
           <Image
             src={thumbnail}
-            alt={`${title} project thumbnail`}
+            alt=""
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -59,6 +59,8 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         <div className="flex items-start justify-between gap-2">
           <Link
             href={`/projects/${slug}`}
+            aria-hidden="true"
+            tabIndex={-1}
             className="focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none"
           >
             <h3 className="hover:text-primary leading-snug font-semibold transition-colors duration-200">

@@ -2,12 +2,12 @@ import type { Experience } from "@/types/experience"
 
 export const experiences: Experience[] = [
   {
-    company: "PT Teknologi Solusi Digital",
-    position: "Fullstack Developer & Project Manager",
+    company: "PT Sahabat Agro Group",
+    position: "Fullstack Developer",
     type: "Full-time",
-    startDate: "January 2024",
+    startDate: "Juni 2025",
     endDate: "Present",
-    location: "Tangerang Selatan, Banten",
+    location: "Jakartaa Utara, DKI Jakarta",
     description:
       "Leading development of enterprise web applications while managing cross-functional teams to deliver projects on time and within scope.",
     responsibilities: [
@@ -52,12 +52,12 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    company: "Freelance",
-    position: "Web Developer",
-    type: "Freelance",
-    startDate: "January 2021",
-    endDate: "May 2022",
-    location: "Remote",
+    company: "PT. Indo Sakti Media",
+    position: "Fullstack Developer ",
+    type: "Part-time",
+    startDate: "September 2022",
+    endDate: "Januari 2025",
+    location: "Tangerang Selatan, Banten",
     description:
       "Delivered custom web solutions for small businesses and startups across various industries.",
     responsibilities: [

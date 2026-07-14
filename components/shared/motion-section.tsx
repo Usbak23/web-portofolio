@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import type { ReactNode } from "react"
 
 import { fadeUp, viewportOnce } from "@/lib/animations"
@@ -11,6 +11,12 @@ interface MotionSectionProps {
 }
 
 export function MotionSection({ children, className }: MotionSectionProps) {
+  const reduced = useReducedMotion()
+
+  if (reduced) {
+    return <div className={className}>{children}</div>
+  }
+
   return (
     <motion.div
       initial="hidden"

@@ -53,6 +53,10 @@ export default function SplitText({
   const [fontsLoaded, setFontsLoaded] = useState(
     () => typeof document !== "undefined" && document.fonts.status === "loaded"
   )
+  const prefersReducedMotion =
+    typeof window !== "undefined"
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false
 
   useEffect(() => {
     onCompleteRef.current = onLetterAnimationComplete
@@ -73,6 +77,11 @@ export default function SplitText({
     () => {
       if (!ref.current || !text || !fontsLoaded) return
       if (animationCompletedRef.current) return
+      if (prefersReducedMotion) {
+        animationCompletedRef.current = true
+        onCompleteRef.current?.()
+        return
+      }
       const el = ref.current as HTMLElement & { _rbsplitInstance?: InstanceType<typeof GSAPSplitText> }
 
       if (el._rbsplitInstance) {
