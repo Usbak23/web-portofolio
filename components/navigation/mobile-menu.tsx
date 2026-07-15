@@ -115,11 +115,13 @@ export function MobileMenu() {
                           delay: index * 0.04,
                           ease: "easeOut",
                         }}
+                        whileHover={{ x: 4 }}
+                        whileTap={{ scale: 0.97 }}
                       >
                         <Link
                           href={href}
                           className={cn(
-                            "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
+                            "block rounded-lg px-4 py-3 text-base font-medium transition-colors duration-150",
                             "hover:bg-muted hover:text-foreground",
                             "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
                             isActive
