@@ -83,33 +83,34 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "Person",
-                name: SITE_NAME,
-                jobTitle: profile.title,
-                description: SITE_DESCRIPTION,
-                url: SITE_URL,
-                email: profile.email,
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: "Tangerang Selatan",
-                  addressRegion: "Banten",
-                  addressCountry: "ID",
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Person",
+                  name: SITE_NAME,
+                  jobTitle: profile.title,
+                  description: SITE_DESCRIPTION,
+                  url: SITE_URL,
+                  email: profile.email,
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Tangerang Selatan",
+                    addressRegion: "Banten",
+                    addressCountry: "ID",
+                  },
+                  sameAs: socials
+                    .filter((s) => s.url.startsWith("http"))
+                    .map((s) => s.url),
                 },
-                sameAs: socials
-                  .filter((s) => s.url.startsWith("http"))
-                  .map((s) => s.url),
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                name: SITE_NAME,
-                url: SITE_URL,
-                description: SITE_DESCRIPTION,
-              },
-            ]),
+                {
+                  "@type": "WebSite",
+                  name: SITE_NAME,
+                  url: SITE_URL,
+                  description: SITE_DESCRIPTION,
+                },
+              ],
+            }),
           }}
         />
       </body>
