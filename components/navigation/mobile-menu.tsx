@@ -23,13 +23,9 @@ export function MobileMenu() {
 
   useEffect(() => {
     if (!open) return
-
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpen(false)
-      }
+      if (e.key === "Escape") setOpen(false)
     }
-
     document.addEventListener("keydown", handleKeyDown)
     return () => document.removeEventListener("keydown", handleKeyDown)
   }, [open])
@@ -57,16 +53,10 @@ export function MobileMenu() {
 
       <AnimatePresence>
         {open && (
-          <div
-            className="fixed inset-0 z-50 md:hidden"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Navigation menu"
-            id="mobile-menu"
-          >
+          <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/50"
+              className="fixed inset-0 z-40 bg-black/80"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -77,7 +67,11 @@ export function MobileMenu() {
 
             {/* Drawer */}
             <motion.div
-              className="bg-background border-border fixed inset-y-0 right-0 flex w-4/5 max-w-sm flex-col border-l shadow-2xl"
+              className="fixed inset-y-0 right-0 z-50 flex w-4/5 max-w-sm flex-col border-l border-border shadow-2xl bg-white dark:bg-[#0a0a0a]"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation menu"
+              id="mobile-menu"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -105,9 +99,9 @@ export function MobileMenu() {
               {/* Nav Links */}
               <nav
                 aria-label="Mobile navigation"
-                className="flex-1 overflow-y-auto px-4 py-6"
+                className="flex-1 px-4 py-4 bg-white dark:bg-[#0a0a0a]"
               >
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-1">
                   {NAV_LINKS.map(({ label, href }, index) => {
                     const isActive =
                       pathname === href || pathname.startsWith(`${href}/`)
@@ -125,11 +119,11 @@ export function MobileMenu() {
                         <Link
                           href={href}
                           className={cn(
-                            "block rounded-md px-4 py-3.5 text-base font-medium transition-colors",
-                            "hover:bg-accent hover:text-accent-foreground",
+                            "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
+                            "hover:bg-muted hover:text-foreground",
                             "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
                             isActive
-                              ? "bg-accent text-accent-foreground"
+                              ? "bg-muted text-foreground font-semibold"
                               : "text-foreground"
                           )}
                           aria-current={isActive ? "page" : undefined}
@@ -145,7 +139,7 @@ export function MobileMenu() {
 
               {/* Footer: Social + Resume */}
               <motion.div
-                className="border-t px-6 py-6"
+                className="border-t px-6 py-6 bg-white dark:bg-[#0a0a0a]"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25, delay: 0.2, ease: "easeOut" }}
@@ -167,7 +161,7 @@ export function MobileMenu() {
                 <SocialLinks socials={socials} className="justify-center" />
               </motion.div>
             </motion.div>
-          </div>
+          </>
         )}
       </AnimatePresence>
     </>
