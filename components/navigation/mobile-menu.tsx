@@ -66,7 +66,7 @@ export function MobileMenu() {
           >
             {/* Backdrop */}
             <motion.div
-              className="bg-background/60 fixed inset-0 backdrop-blur-sm"
+              className="fixed inset-0 bg-black/50"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -77,7 +77,7 @@ export function MobileMenu() {
 
             {/* Drawer */}
             <motion.div
-              className="bg-background border-border/50 fixed inset-y-0 right-0 flex w-full max-w-xs flex-col border-l shadow-xl"
+              className="bg-background border-border fixed inset-y-0 right-0 flex w-4/5 max-w-sm flex-col border-l shadow-2xl"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -107,7 +107,7 @@ export function MobileMenu() {
                 aria-label="Mobile navigation"
                 className="flex-1 overflow-y-auto px-4 py-6"
               >
-                <ul className="flex flex-col gap-1">
+                <ul className="flex flex-col gap-2">
                   {NAV_LINKS.map(({ label, href }, index) => {
                     const isActive =
                       pathname === href || pathname.startsWith(`${href}/`)
@@ -125,14 +125,15 @@ export function MobileMenu() {
                         <Link
                           href={href}
                           className={cn(
-                            "block rounded-md px-3 py-2.5 text-base font-medium transition-colors",
+                            "block rounded-md px-4 py-3.5 text-base font-medium transition-colors",
                             "hover:bg-accent hover:text-accent-foreground",
                             "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
                             isActive
                               ? "bg-accent text-accent-foreground"
-                              : "text-muted-foreground"
+                              : "text-foreground"
                           )}
                           aria-current={isActive ? "page" : undefined}
+                          onClick={() => setOpen(false)}
                         >
                           {label}
                         </Link>
@@ -144,7 +145,7 @@ export function MobileMenu() {
 
               {/* Footer: Social + Resume */}
               <motion.div
-                className="border-t px-6 py-5"
+                className="border-t px-6 py-6"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25, delay: 0.2, ease: "easeOut" }}
