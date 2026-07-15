@@ -76,13 +76,13 @@ export const experiences: Experience[] = [
     endDate: "Oktober 2025",
     location: "Tangerang Selatan, Banten",
     description:
-      "Led the technology division of the student association, organizing workshops and managing the division's digital infrastructure.",
+      "Led the research and development division responsible for designing training curricula, evaluating program effectiveness, and driving internal organizational innovation.",
     responsibilities: [
       "Collaborated with internal trainers and stakeholders to standardize program quality.",
       "Conducted impact evaluations to enhance training effectiveness.",
       "Strengthened organizational structure and member engagement.",
     ],
-    technologies: ["HTML", "CSS", "JavaScript", "WordPress"],
+    technologies: ["Google Workspace", "Canva", "Microsoft Office", "Notion"],
   },
   {
     company: "Himpunan Mahasiswa Islam Komisariat Fakultas Teknik Cabang Ciputat",
@@ -92,13 +92,13 @@ export const experiences: Experience[] = [
     endDate: "April 2025",
     location: "Tangerang Selatan, Banten",
     description:
-      "Led the technology division of the student association, organizing workshops and managing the division's digital infrastructure.",
+      "Led the faculty-level student organization overseeing intellectual development, leadership programs, and social initiatives for engineering students.",
     responsibilities: [
       "Directed leadership and intellectual development programs for members.",
       "Facilitated regular forums, training sessions, and social initiatives.",
       "Strengthened organizational structure and member engagement.",
     ],
-    technologies: ["HTML", "CSS", "JavaScript", "WordPress"],
+    technologies: ["Google Workspace", "Canva", "Microsoft Office", "WhatsApp Business"],
   },
   {
     company: "Himpunan Mahasiswa Sistem Informasi Universitas Pamulang",
@@ -108,12 +108,12 @@ export const experiences: Experience[] = [
     endDate: "Januari 2023",
     location: "Tangerang Selatan, Banten",
     description:
-      "Led the technology division of the student association, organizing workshops and managing the division's digital infrastructure.",
+      "Led the Information Systems student organization at Universitas Pamulang with 100+ active members, coordinating academic, social, and capacity-building programs.",
     responsibilities: [
       "Led a university-wide student organization with 100+ active members.",
       "Coordinated campus-wide iniatiatives and represented student interests in administrative disscussions.",
       "Oversaw program planning, budgeting and team perfomance."
     ],
-    technologies: ["HTML", "CSS", "JavaScript", "WordPress"],
+    technologies: ["Google Workspace", "Canva", "Microsoft Office", "Instagram", "WordPress"],
   },
 ]
