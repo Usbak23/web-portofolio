@@ -169,11 +169,10 @@ export const heroContainer: Variants = {
 
 /** Setiap elemen hero — fade + slide up */
 export const heroItem: Variants = {
-  hidden: { opacity: 0, y: 32, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 32 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: DURATION.slower, ease: EASE.expo },
   },
 }

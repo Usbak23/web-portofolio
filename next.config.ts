@@ -2,8 +2,9 @@ import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
   images: {
-    // Modern formats — avif first (best compression), then webp as fallback
-    formats: ["image/avif", "image/webp"],
+    // webp: broadly supported including Safari 14+
+    // avif removed — Safari < 16 does not support it and would serve degraded images
+    formats: ["image/webp"],
 
     // Device sizes for responsive images (matches common breakpoints)
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],

@@ -253,6 +253,16 @@ export default function Orb({
     const container = ctnDom.current;
     if (!container) return;
 
+    // Check WebGL support before creating context — Safari may limit or block WebGL
+    const testCanvas = document.createElement('canvas');
+    const testGl =
+      testCanvas.getContext('webgl2') ||
+      testCanvas.getContext('webgl') ||
+      testCanvas.getContext('experimental-webgl');
+    if (!testGl) return;
+    // Release the test context immediately
+    (testGl as WebGLRenderingContext).getExtension('WEBGL_lose_context')?.loseContext();
+
     const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);

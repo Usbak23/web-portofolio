@@ -27,7 +27,7 @@ const Lanyard = dynamic(() => import("@/components/shared/lanyard"), {
 })
 
 // Error boundary to prevent Lanyard WebGL errors from crashing the page
-class LanyardErrorBoundary extends Component<
+class WebGLErrorBoundary extends Component<
   { children: ReactNode },
   { hasError: boolean }
 > {
@@ -54,15 +54,24 @@ const TITLES = [
 ]
 
 export function HeroSection() {
-  // Defer heavy WebGL components until after page is interactive
+  // Defer heavy WebGL components until after page is interactive.
+  // requestIdleCallback is not supported on Safari iOS — use setTimeout as fallback.
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const id = requestIdleCallback(
-      () => setMounted(true),
-      { timeout: 2000 },
-    )
-    return () => cancelIdleCallback(id)
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const id = (window as typeof window & { requestIdleCallback: (cb: () => void, opts?: { timeout?: number }) => number }).requestIdleCallback(
+        () => setMounted(true),
+        { timeout: 2000 },
+      )
+      return () => {
+        (window as typeof window & { cancelIdleCallback: (id: number) => void }).cancelIdleCallback(id)
+      }
+    } else {
+      // Safari iOS fallback: use setTimeout
+      const id = setTimeout(() => setMounted(true), 200)
+      return () => clearTimeout(id)
+    }
   }, [])
 
   return (
@@ -73,12 +82,14 @@ export function HeroSection() {
       {/* Orb — full section background, deferred */}
       {mounted && (
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <Orb
-            hue={0}
-            hoverIntensity={2}
-            rotateOnHover
-            forceHoverState={false}
-          />
+          <WebGLErrorBoundary>
+            <Orb
+              hue={0}
+              hoverIntensity={2}
+              rotateOnHover
+              forceHoverState={false}
+            />
+          </WebGLErrorBoundary>
         </div>
       )}
 
@@ -88,7 +99,7 @@ export function HeroSection() {
           className="absolute inset-0 hidden xl:block"
           aria-hidden="true"
         >
-          <LanyardErrorBoundary>
+          <WebGLErrorBoundary>
             <Lanyard
               position={[0, 0, 20]}
               gravity={[0, -40, 0]}
@@ -96,7 +107,7 @@ export function HeroSection() {
               imageFit="cover"
               groupPositionY={6}
             />
-          </LanyardErrorBoundary>
+          </WebGLErrorBoundary>
         </div>
       )}
 
