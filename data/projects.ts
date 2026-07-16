@@ -32,7 +32,7 @@ export const projects: Project[] = [
     ],
     category: "API",
     status: "Completed",
-    featured: true,
+    featured: false,
     githubUrl: "https://github.com/Usbak23/project-management-system",
     startDate: "Juni 2025",
     endDate: "On Going",
@@ -229,8 +229,13 @@ export const projects: Project[] = [
       "Slicing desain landing page travel dari Figma ke HTML murni yang responsif, dilengkapi animasi scroll, slider destinasi interaktif, dan form pencarian trip.",
     description:
       "Touravel adalah proyek landing page bertema travel yang dibangun dengan cara men-slicing desain dari Figma ke dalam HTML, CSS, dan JavaScript vanilla. Halaman ini menampilkan pengalaman visual yang menarik dengan hero section yang memuat form pencarian destinasi, section layanan, daftar destinasi populer berbasis slider, statistik, testimoni pelanggan, hingga footer. Fokus utama proyek ini adalah ketepatan implementasi desain (pixel-perfect), responsivitas di  berbagai ukuran layar, serta pengalaman pengguna yang halus melalui animasi dan transisi.",
-    thumbnail: "/images/projects/touravel-travel-landing-page/thumbnail.jpg",
-    images: ["/images/projects/touravel-travel-landing-page/screenshot-1.jpg"],
+    thumbnail: "/images/projects/touravel-travel-landing-page/thumbnail.png",
+    images: [
+      "/images/projects/touravel-travel-landing-page/screenshot-1.png",
+      "/images/projects/touravel-travel-landing-page/screenshot-2.png",
+      "/images/projects/touravel-travel-landing-page/screenshot-4.png",
+      "/images/projects/touravel-travel-landing-page/screenshot-5.png",
+    ],
     technologies: [
       "HTML5",
       "CSS3",
@@ -495,8 +500,12 @@ export const projects: Project[] = [
       "Sistem penilaian berbasis web untuk mendukung kegiatan SITRA (Sistem Instruktur dan Pelatihan) HMI, mencakup manajemen peserta, absensi QR Code, dan penilaian multi-aspek: kognitif, psikomotorik, dan afektif.",
     description:
       " Aplikasi Penilaian SITRA HMI adalah platform manajemen penilaian pelatihan berbasis web yang dibangun untuk mendukung penyelenggaraan kegiatan kaderisasi HMI (Himpunan Mahasiswa Islam), menggantikan proses penilaian manual yang rentan terhadap kesalahan dan tidak efisien. Sistem ini memiliki dua peran pengguna — Admin (Pemandu) yang bertugas mengelola data, mencatat nilai, dan memantau perkembangan peserta; serta Peserta yang dapat memantau nilai dan kehadiran mereka secara mandiri melalui dashboard personal. Penilaian dirancang secara komprehensif mengikuti taksonomi Bloom, mencakup tiga domain: kognitif (tugas, pre-test, mid-test, post-test, FGD, makalah), psikomotorik, dan afektif, dengan sistem absensi digital menggunakan QR Code yang di-scan langsung oleh peserta untuk mencatat kehadiran secara real-time.",
-    thumbnail: "/images/projects/sistem-penilaian/thumbnail.jpg",
-    images: ["/images/projects/sistem-penilaian/screenshot-1.jpg"],
+    thumbnail: "/images/projects/sistem-penilaian/thumbnail.png",
+    images: ["/images/projects/sistem-penilaian/screenshot-1.png",
+      "/images/projects/sistem-penilaian/screenshot-2.png",
+      "/images/projects/sistem-penilaian/screenshot-3.png",
+      "/images/projects/sistem-penilaian/screenshot-4.png",
+    ],
     technologies: [
       "Node.js",
       "Express.js",
