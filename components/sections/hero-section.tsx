@@ -47,8 +47,8 @@ class WebGLErrorBoundary extends Component<
 }
 
 const TITLES = [
-  "Fullstack Developer",
   "Software Engineer",
+  "Fullstack Developer",
   "Web Developer",
   "Mobile Developer",
 ]
